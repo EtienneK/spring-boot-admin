@@ -2,3 +2,6 @@ language: java
 sudo: required
 services:
   - docker
+script:
+  - mvn clean package
+  - mvn docker:build
