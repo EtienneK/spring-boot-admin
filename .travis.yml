@@ -14,4 +14,6 @@ before_install:
 
 script:
   - mvn clean verify
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS && mvn docker:build -DpushImage
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS 
+  - mvn docker:build
+  - docker push etiennek/spring-boot-admin
