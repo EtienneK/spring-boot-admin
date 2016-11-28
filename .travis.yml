@@ -14,5 +14,4 @@ before_install:
 
 script:
   - mvn clean verify
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - mvn docker:build -DpushImage
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS && mvn docker:build -DpushImage
