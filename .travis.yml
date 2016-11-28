@@ -17,4 +17,4 @@ script:
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - mvn docker:build -DpushImageTag
+  - mvn docker:build -DpushImage
