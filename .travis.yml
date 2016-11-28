@@ -2,6 +2,19 @@ language: java
 sudo: required
 services:
   - docker
+
+branches:
+  only:
+    - master
+
+before_install:
+  # troubleshooting info in case of problems
+  - docker version
+  - docker info
+
 script:
-  - mvn clean package
-  - mvn docker:build
+  - mvn clean verify
+
+after_success:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - mvn docker:build -DpushImageTag
